@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/teal_200</item>
+        <item name="colorPrimaryDark">@color/teal_700</item>
+        <item name="colorAccent">@color/purple_700</item>
+    </style>
+    <style name="GreetingsScreenTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/teal_200</item>
+        <item name="colorPrimaryDark">@color/teal_700</item>
+        <item name="colorAccent">@color/basic</item>
+        <item name="background">@color/back</item>
+    </style>
+    <style name="ButtonStyle" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/basic</item>
+        <item name="colorControlHighlight">@color/pressed</item>
+    </style>
+</resources>
