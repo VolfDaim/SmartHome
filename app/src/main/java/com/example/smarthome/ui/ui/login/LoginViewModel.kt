@@ -1,5 +1,6 @@
 package com.example.smarthome.ui.ui.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,16 +18,11 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
+    fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
         val result = loginRepository.login(username, password)
+        Log.i("INFO", result.toString())
 
-        if (result is Result.Success) {
-
-        } else {
-            _loginResult.value = LoginResult(error = R.string.login_failed)
-        }
-        return result
     }
 
     fun loginDataChanged(username: String, password: String) {

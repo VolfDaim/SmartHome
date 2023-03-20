@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -16,12 +17,26 @@ import android.widget.Toast
 import com.example.smarthome.Menu
 import com.example.smarthome.R
 import com.example.smarthome.databinding.ActivityLoginBinding
+import com.example.smarthome.httpclient.LoginRequest
+import com.example.smarthome.httpclient.LoginResponse
+import com.example.smarthome.httpclient.RetrofitClient
+import com.example.smarthome.httpclient.RetrofitServices
 import com.example.smarthome.ui.data.Result
+import com.example.smarthome.ui.data.model.LoggedInUser
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import java.io.IOException
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
+    var retrofit: Retrofit = RetrofitClient.getClient("http://192.168.1.40:8080/")
+    var auth: RetrofitServices = retrofit.create(RetrofitServices::class.java)
+    var user: LoggedInUser? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +48,8 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.password
         val login = binding.login
         val loading = binding.loading
+
+
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
@@ -95,16 +112,50 @@ class LoginActivity : AppCompatActivity() {
             }
 
             login.setOnClickListener {
-                loading.visibility = View.VISIBLE
                 val result =
-                    loginViewModel.login(username.text.toString(), password.text.toString())
-                if (result is Result.Success) {
-                    loginClick(this);
-                }
+                    login(username.text.toString(), password.text.toString(), this)
             }
         }
     }
 
+
+    fun login(username: String, password: String, view: View) {
+        try {
+
+            var login: LoginRequest = LoginRequest(username, password)
+            var message: Call<LoginResponse> = auth.SignIn(login)
+            getData(message, view)
+
+        } catch (e: Throwable) {
+
+        }
+    }
+
+    fun getData(message: Call<LoginResponse>, view: View) {
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        val loading = binding.loading
+        loading.visibility = View.VISIBLE
+        message.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
+            ) {
+                Log.i("INFO", response.toString())
+                if (response.isSuccessful) {
+                    loading.visibility = View.INVISIBLE
+                    loginClick(view)
+                }
+                else{
+                    Toast.makeText(applicationContext, "Login Failed", Toast.LENGTH_SHORT).show()
+                    loading.visibility = View.INVISIBLE
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Log.e("Error", t.message.toString())
+            }
+        })
+    }
     fun loginClick(view: View) {
         val intent = Intent(this, Menu::class.java);
         startActivity(intent);
