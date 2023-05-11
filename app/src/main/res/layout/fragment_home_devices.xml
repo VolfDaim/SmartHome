@@ -8,6 +8,16 @@
     tools:context=".ui.fragment_home.HomeFragmentDevices">
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="@dimen/space_x1"
+        android:clickable="true"
+        android:foregroundGravity="right|bottom"
+        app:borderWidth="0dp" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,15 +45,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_device"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/space_x1"
-        android:layout_gravity="right|bottom"
-        android:clickable="true"
-        android:foregroundGravity="right|bottom"
-        app:borderWidth="0dp" />
 
 </FrameLayout>

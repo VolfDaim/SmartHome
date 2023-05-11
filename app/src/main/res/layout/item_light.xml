@@ -6,54 +6,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <Button
-        android:id="@+id/switch_light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/light_place"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_x1">
 
-    <ImageView
-        android:id="@+id/light_condition"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/light_place"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        <Button
+            android:id="@+id/switch_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Switch" />
 
-    <TextView
-        android:id="@+id/light_place"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/light_name"
-        app:layout_constraintStart_toEndOf="@+id/switch_light"
-        app:layout_constraintEnd_toStartOf="@+id/light_condition"
-        tools:text="Light place"
-        />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/light_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/space_x1"
-        android:layout_marginStart="@dimen/space_x1"
-        android:layout_marginEnd="@dimen/space_x1"
-        app:layout_constraintTop_toBottomOf="@+id/light_place"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/switch_light"
-        app:layout_constraintEnd_toStartOf="@+id/light_condition"
-        tools:text="Light 0"
-        />
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
+                android:text="@string/device_name"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/text_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
+                android:text="@string/device_place"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/light_name"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/light_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/light_condition"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"/>
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
