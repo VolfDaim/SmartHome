@@ -19,10 +19,6 @@ import retrofit2.Response
 
 class CreateDevice : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +28,7 @@ class CreateDevice : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_create_device, container, false)
     }
+
 
     @SuppressLint("ResourceType")
     override fun onStart() {

@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if(savedInstanceState == null) {
-            parentFragmentManager.beginTransaction().apply {
+            childFragmentManager.beginTransaction()?.apply {
                 replace(R.id.fragment_home_frame, HomeFragmentDevices.newInstance())
                 commit()
             }

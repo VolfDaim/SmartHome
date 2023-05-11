@@ -66,7 +66,7 @@ class HomeFragmentDevices : Fragment() {
         }
 
         createDevice?.setOnClickListener {
-            val transaction = parentFragmentManager?.beginTransaction()?.apply {
+            val transaction = parentFragmentManager.beginTransaction().apply {
                 replace(R.id.fragment_home_frame, CreateDevice.newInstance())
                 commit()
             }

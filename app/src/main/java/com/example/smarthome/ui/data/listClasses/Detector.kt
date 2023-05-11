@@ -6,5 +6,7 @@ data class Detector (
     @SerializedName("name")
     val name: String,
     @SerializedName("place")
-    val place: String
+    val place: String,
+    @SerializedName("statement")
+    val statement: String
 )
