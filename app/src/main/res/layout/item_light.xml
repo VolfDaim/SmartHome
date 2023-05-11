@@ -29,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/secondary_text"
                 android:text="@string/device_name"
-                android:textSize="12sp"/>
+                android:textSize="12sp"
+                android:layout_margin="@dimen/space_x1"/>
 
             <TextView
                 android:id="@+id/text_place"
@@ -37,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/secondary_text"
                 android:text="@string/device_place"
-                android:textSize="12sp"/>
+                android:textSize="12sp"
+                android:layout_margin="@dimen/space_x1"/>
         </LinearLayout>
 
         <LinearLayout
@@ -48,16 +50,18 @@
             <TextView
                 android:id="@+id/light_name"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:textColor="@color/primary_text"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_margin="@dimen/space_x1"/>
 
             <TextView
                 android:id="@+id/light_place"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textColor="@color/primary_text"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_margin="@dimen/space_x1"/>
         </LinearLayout>
 
         <ImageView
