@@ -8,17 +8,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/space_x1">
+        android:padding="@dimen/space_x1"
+        android:weightSum="10">
 
         <Button
             android:id="@+id/switch_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Switch" />
+            android:text="Switch"
+            android:layout_weight="1"/>
 
         <LinearLayout
+            android:layout_weight="2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -45,7 +48,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="5">
 
             <TextView
                 android:id="@+id/light_name"
@@ -68,7 +72,9 @@
             android:id="@+id/light_condition"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="end"/>
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            />
 
     </LinearLayout>
 
