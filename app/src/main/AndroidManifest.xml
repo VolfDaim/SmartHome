@@ -11,26 +11,26 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/SplashScreenTheme"
+        android:theme="@style/MainTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
         <activity
             android:name=".Menu"
             android:exported="false"
-            android:theme="@style/Theme.SmartHome" />
+            android:theme="@style/MainTheme" />
         <activity
             android:name=".ui.ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
-            android:theme="@style/GreetingsScreenTheme" />
+            android:theme="@style/MainTheme" />
         <activity
             android:name=".GreetingActivity"
             android:exported="false"
-            android:theme="@style/GreetingsScreenTheme" />
+            android:theme="@style/MainTheme" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/SplashScreenTheme" >
+            android:theme="@style/MainTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
