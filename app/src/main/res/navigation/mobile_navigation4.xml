@@ -14,9 +14,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.smarthome.ui.dashboard.DashboardFragment"
+        android:name="com.example.smarthome.ui.dashboard.ProfileFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_notifications"

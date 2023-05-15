@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">SmartHome</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Устройства</string>
+    <string name="title_dashboard">Профиль</string>
+    <string name="title_notifications">Уведомления</string>
     <string name="greeting">Приветствуем! \n Давайте приступим к настройке вашего дома!</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>

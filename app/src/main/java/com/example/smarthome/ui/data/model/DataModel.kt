@@ -10,7 +10,7 @@ sealed class DataModel {
         @SerializedName("place")
         val place: String,
         @SerializedName("condition")
-        val condition: Boolean,
+        var condition: Boolean,
         @SerializedName("id")
         val id: String? = null,
     ) : DataModel()

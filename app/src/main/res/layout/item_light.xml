@@ -1,83 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    android:paddingTop="@dimen/space_x1"
+    android:paddingBottom="@dimen/space_x1">
+
+    <Button
+        android:id="@+id/switch_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Switch"
+        android:layout_marginRight="@dimen/space_x1"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/space_x1"
-        android:weightSum="10">
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/switch_light"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="@dimen/space_x1">
 
-        <Button
-            android:id="@+id/switch_light"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Switch"
-            android:layout_weight="1"/>
+            android:text="@string/device_name"
+            android:textColor="@color/secondary_text" />
 
-        <LinearLayout
-            android:layout_weight="2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/secondary_text"
-                android:text="@string/device_name"
-                android:textSize="12sp"
-                android:layout_margin="@dimen/space_x1"/>
-
-            <TextView
-                android:id="@+id/text_place"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/secondary_text"
-                android:text="@string/device_place"
-                android:textSize="12sp"
-                android:layout_margin="@dimen/space_x1"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="5">
-
-            <TextView
-                android:id="@+id/light_name"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:textColor="@color/primary_text"
-                android:textStyle="bold"
-                android:layout_margin="@dimen/space_x1"/>
-
-            <TextView
-                android:id="@+id/light_place"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="@color/primary_text"
-                android:textStyle="bold"
-                android:layout_margin="@dimen/space_x1"/>
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/light_condition"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="right"
-            android:layout_weight="1"
-            />
-
+        <TextView
+            android:id="@+id/text_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/device_place"
+            android:textColor="@color/secondary_text"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/light_condition"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/light_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/light_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/light_condition"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0."
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

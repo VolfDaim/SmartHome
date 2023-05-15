@@ -14,10 +14,22 @@ interface ApiInterface {
     fun getEcho() : Call<Echo>
 
     /**
+     * Ендпоинты для авторизации и регистрации.
+     */
+    @POST("auth/login")
+    fun login(@Body auth: Auth): Response<LoginResponse>
+
+    @GET("auth/refresh")
+    fun refreshToken(@Header("Authorization") token: String): Response<LoginResponse>
+
+    @GET("user/info")
+    fun getUserInfo(): Response<UserInfoResponse>
+
+    /**
      * Ендпоинты для работы с лампочками.
      */
-    @GET("api/devices/lights")
-    fun getAllLights() : Call<List<DataModel.Light>>
+    @GET("api/devices/lights/")
+    fun getAllLights() : Call<ArrayList<DataModel.Light>>
 
     @GET("api/devices/lights/{id}")
     fun getLight(@Path("id") id: String) : Call<DataModel.Light>
@@ -31,14 +43,14 @@ interface ApiInterface {
     @DELETE("api/devices/lights/{id}")
     fun deleteLight(@Path("id") id: String) : Call<DataModel.Light>
 
-    @POST("api/devices/lights/{id}/toggle")
-    fun toggleLight(@Path("id") id: String) : Call<DataModel.Light>
+    @POST("api/devices/lights/{id}/toggle/")
+    fun toggleLight(@Path("id") id: String?) : Call<DataModel.Light>
 
     /**
      * Ендпоинты для работы с камерами.
      */
-    @GET("api/devices/cameras")
-    fun getAllCameras() : Call<List<DataModel.Camera>>
+    @GET("/api/devices/cameras/")
+    fun getAllCameras() : Call<ArrayList<DataModel.Camera>>
 
     @GET("api/devices/cameras/{id}")
     fun getCamera(@Path("id") id: String) : Call<DataModel.Camera>
@@ -55,8 +67,8 @@ interface ApiInterface {
     /**
      * Ендпоинты для работы с датчками.
      */
-    @GET("api/devices/detectors")
-    fun getAllDetectors() : Call<List<DataModel.Detector>>
+    @GET("/api/devices/detectors/")
+    fun getAllDetectors() : Call<ArrayList<DataModel.Detector>>
 
     @GET("api/devices/detectors/{id}")
     fun getDetector(@Path("id") id: String) : Call<DataModel.Detector>
@@ -72,7 +84,7 @@ interface ApiInterface {
 
     companion object {
 
-        var BASE_URL = "https://6c74-188-123-231-121.eu.ngrok.io"
+        var BASE_URL = "https://7419-2a00-1fa0-aea-f20f-3593-eb73-2c9e-fa0a.eu.ngrok.io"
 
         fun create() : ApiInterface {
 

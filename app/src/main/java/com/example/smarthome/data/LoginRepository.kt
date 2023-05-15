@@ -1,6 +1,6 @@
-package com.example.smarthome.ui.data
+package com.example.smarthome.data
 
-import com.example.smarthome.ui.data.model.LoggedInUser
+import com.example.smarthome.data.model.LoggedInUser
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -27,9 +27,15 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-    fun login(username: String, password: String) {
+    fun login(username: String, password: String): Result<LoggedInUser> {
         // handle login
+        val result = dataSource.login(username, password)
 
+        if (result is Result.Success) {
+            setLoggedInUser(result.data)
+        }
+
+        return result
     }
 
     private fun setLoggedInUser(loggedInUser: LoggedInUser) {

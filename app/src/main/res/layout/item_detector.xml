@@ -6,49 +6,81 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/space_x1">
 
+
+    <TextView
+        android:id="@+id/detector_statement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/det_lin2" />
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/det_lin1"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="4dp"
-        android:padding="@dimen/space_x1">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/det_lin2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="@dimen/space_x1">
 
-        <ImageView
-            android:id="@+id/detector"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:gravity="center"
-            android:layout_margin="@dimen/space_x1"
-            android:src="@drawable/detector" />
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/text_name_det"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:text="@string/device_name"
+            android:textColor="@color/secondary_text" />
 
-            <TextView
-                android:id="@+id/detector_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_margin="@dimen/space_x1" />
-
-            <TextView
-                android:id="@+id/detector_place"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_margin="@dimen/space_x1" />
-
-            <TextView
-                android:id="@+id/detector_statement"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_margin="@dimen/space_x1" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/text_place_det"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/device_place"
+            android:textColor="@color/secondary_text"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/det_lin2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/detector"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/det_lin1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/detector_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/detector_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/detector"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/detector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0."
+        app:layout_constraintStart_toEndOf="@+id/det_lin2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
