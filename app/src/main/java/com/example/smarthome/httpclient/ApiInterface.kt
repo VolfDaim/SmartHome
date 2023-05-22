@@ -1,5 +1,6 @@
 package com.example.smarthome.httpclient
 
+import com.example.smarthome.data.model.LoggedInUser
 import com.example.smarthome.ui.data.listClasses.*
 import com.example.smarthome.ui.data.model.DataModel
 import retrofit2.Call
@@ -16,14 +17,11 @@ interface ApiInterface {
     /**
      * Ендпоинты для авторизации и регистрации.
      */
-    @POST("auth/login")
-    fun login(@Body auth: Auth): Response<LoginResponse>
+    @POST("auth/sign-in")
+    fun login(@Header("Authorization") token: String): Call<LoggedInUser>
 
     @GET("auth/refresh")
-    fun refreshToken(@Header("Authorization") token: String): Response<LoginResponse>
-
-    @GET("user/info")
-    fun getUserInfo(): Response<UserInfoResponse>
+    fun refreshToken(@Header("Authorization") token: String): Call<LoginResponse>
 
     /**
      * Ендпоинты для работы с лампочками.
@@ -84,7 +82,7 @@ interface ApiInterface {
 
     companion object {
 
-        var BASE_URL = "https://7419-2a00-1fa0-aea-f20f-3593-eb73-2c9e-fa0a.eu.ngrok.io"
+        var BASE_URL = "https://9f8a-188-123-231-94.eu.ngrok.io"
 
         fun create() : ApiInterface {
 

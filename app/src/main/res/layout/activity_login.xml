@@ -5,44 +5,38 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".auth.LoginActivity"
     >
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:text="Login"
-        android:paddingVertical="35dp"
-        android:textAlignment="center"
-        android:textSize="60sp"
-        android:fontFamily="cursive"
-        android:textColor="@color/text_color"
-        android:layout_marginBottom="25dp"
-        />
-    <TextView
-        android:layout_width="match_parent"
         android:layout_marginHorizontal="30dp"
         android:layout_height="wrap_content"
-        android:text="User name"
+        android:paddingTop="50dp"
+        android:text="Логин"
         android:textColor="@color/accent_color"
         />
     <EditText
+        android:id="@+id/edit_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:hint="Логин"
+        android:textColor="@color/primary_text"
         android:layout_marginHorizontal="30dp"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_marginHorizontal="30dp"
         android:layout_height="wrap_content"
-        android:text="Password"
+        android:text="Пароль"
         android:textColor="@color/accent_color"
         />
     <EditText
+        android:id="@+id/edit_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Пароль"
+        android:textColor="@color/primary_text"
         android:inputType="textPassword"
         android:paddingHorizontal="12dp"
         android:paddingVertical="20dp"
@@ -50,18 +44,22 @@
         />
 
     <Button
+        android:id="@+id/sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Войти"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="20dp"
         android:textColor="@color/white"
         />
     <TextView
+        android:id="@+id/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No Account yet? create One"
+        android:text="Нет аккаунта? Зарегистрироваться"
         android:layout_marginHorizontal="30dp"
+        android:textColor="@color/accent_color"
         android:textAlignment="center"
+        android:clickable="true"
         />
 </LinearLayout>

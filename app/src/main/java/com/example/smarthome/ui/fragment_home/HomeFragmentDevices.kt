@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.smarthome.R
 import com.example.smarthome.httpclient.ApiInterface
+import com.example.smarthome.ui.data.listClasses.LoginResponse
 import com.example.smarthome.ui.data.model.DataModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
@@ -72,7 +73,6 @@ class HomeFragmentDevices : Fragment() {
             val prefs = activity?.getSharedPreferences("shared preferences", Context.MODE_PRIVATE)
             val editor = prefs?.edit()
             val devices = ArrayList<DataModel>()
-
 
             /**
              * Get all Lights
