@@ -14,13 +14,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.smarthome.ui.dashboard.ProfileFragment"
+        android:name="com.example.smarthome.ui.fragment_profile.ProfileFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.smarthome.ui.notifications.NotificationsFragment"
+        android:name="com.example.smarthome.ui.fragment_notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.smarthome.ui.dashboard
+package com.example.smarthome.ui.fragment_profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

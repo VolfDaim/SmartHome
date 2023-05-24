@@ -1,4 +1,4 @@
-package com.example.smarthome.ui.data.listClasses
+package com.example.smarthome.auth.bo
 
 import com.google.gson.annotations.SerializedName
 

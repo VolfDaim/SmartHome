@@ -1,4 +1,4 @@
-package com.example.smarthome.ui.dashboard
+package com.example.smarthome.ui.fragment_profile
 
 import android.content.Context
 import android.content.Intent
@@ -42,15 +42,21 @@ class ProfileFragment : Fragment() {
         val username: TextView = view.findViewById(R.id.username)
         val userplace: TextView = view.findViewById(R.id.userplace)
         val userdevice: TextView = view.findViewById(R.id.userdevices)
+        val nameprofile: TextView = view.findViewById(R.id.name_profile)
+        val userdevices: TextView = view.findViewById(R.id.userdevices)
 
         val shPrefs = activity?.getSharedPreferences("shared preferences", Context.MODE_PRIVATE)
 
         username.setText(shPrefs?.getString("username", null))
         userplace.setText(shPrefs?.getString("userplace", null))
         userdevice.setText(shPrefs?.getString("userdevice", null))
+        nameprofile.setText(shPrefs?.getString("username", null))
+        userdevices.setText("Кол-во подключенных устройств: "+shPrefs?.getString("amount_devices", null))
+
 
         button.setOnClickListener {
-            shPrefs?.edit()?.remove("token")?.apply()
+            shPrefs?.edit()?.clear()?.apply()
+
             startActivity(Intent(activity, LoginActivity::class.java))
             activity?.finish()
         }

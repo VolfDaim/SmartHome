@@ -1,9 +1,10 @@
-package com.example.smarthome
+package com.example.smarthome.main_activitys
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.smarthome.R
 import com.example.smarthome.auth.LoginActivity
 
 class GreetingActivity : AppCompatActivity() {

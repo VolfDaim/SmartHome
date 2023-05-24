@@ -1,4 +1,4 @@
-package com.example.smarthome.ui.notifications
+package com.example.smarthome.ui.fragment_notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.example.smarthome
+package com.example.smarthome.main_activitys
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
+import com.example.smarthome.R
 import com.example.smarthome.auth.LoginActivity
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 finish()
             }
             else {
-                val intent = Intent(this, Menu::class.java)
+                val intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
                 finish()
             }

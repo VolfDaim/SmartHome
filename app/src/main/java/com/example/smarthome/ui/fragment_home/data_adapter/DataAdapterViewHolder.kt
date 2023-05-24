@@ -1,4 +1,4 @@
-package com.example.smarthome.ui.fragment_home
+package com.example.smarthome.ui.fragment_home.data_adapter
 
 import android.content.Context
 import android.util.Log
@@ -10,7 +10,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smarthome.R
 import com.example.smarthome.httpclient.ApiInterface
-import com.example.smarthome.ui.data.model.DataModel
+import com.example.smarthome.httpclient.ApiService
+import com.example.smarthome.ui.fragment_home.bo.DataModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import retrofit2.Call
@@ -21,10 +22,17 @@ import java.lang.reflect.Type
 class DataAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private fun bindLights(item: DataModel.Light) {
+        val sharedPrefs = itemView.context.getSharedPreferences(
+            "shared preferences",
+            Context.MODE_PRIVATE
+        )
+        val token = sharedPrefs?.getString("token", null)
+
         var condition: ImageView? = itemView.findViewById(R.id.light_condition)
         val name: TextView? = itemView.findViewById(R.id.light_name)
         val place: TextView? = itemView.findViewById(R.id.light_place)
         val button: Button? = itemView.findViewById(R.id.switch_light)
+        val deleteButton: Button? = itemView.findViewById(R.id.delete_light)
 
         if (item.condition) {
             condition?.setImageResource(R.drawable.light_on)
@@ -36,8 +44,12 @@ class DataAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
         place?.text = item.place
 
+        deleteButton?.setOnClickListener {
+            ApiService().deleteLight(itemView.context, item.id!!)
+        }
+
         button?.setOnClickListener {
-            val toggleLight = ApiInterface.create().toggleLight(item.id)
+            val toggleLight = ApiInterface.create().toggleLight(token, item.id)
             Log.i("INFO", "BUTTON PRESSED")
 
             toggleLight.enqueue(object :
@@ -46,15 +58,9 @@ class DataAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
                     call: Call<DataModel.Light>,
                     response: Response<DataModel.Light>
                 ) {
-                    if (response?.body() != null) {
-                        println(response.body())
-                        println(response.message())
+                    if (response.body() != null) {
                         val lights = ArrayList<DataModel.Light>()
                         val gson = Gson()
-                        val sharedPrefs = itemView.context.getSharedPreferences(
-                            "shared preferences",
-                            Context.MODE_PRIVATE
-                        )
                         var json_lights = sharedPrefs.getString("lights", null)
                         val listTypeLights: Type =
                             object : TypeToken<ArrayList<DataModel.Light?>?>() {}.type
@@ -86,7 +92,11 @@ class DataAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     private fun bindCameras(item: DataModel.Camera) {
         val name: TextView? = itemView.findViewById(R.id.camera_name)
         val place: TextView? = itemView.findViewById(R.id.camera_place)
+        val deleteButton: Button? = itemView.findViewById(R.id.delete_camera)
+        deleteButton?.setOnClickListener {
+            ApiService().deleteCamera(itemView.context, item.id!!)
 
+        }
         name?.text = item.name
         place?.text = item.place
 
@@ -96,6 +106,11 @@ class DataAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         val name: TextView? = itemView.findViewById(R.id.detector_name)
         val place: TextView? = itemView.findViewById(R.id.detector_place)
         val statement: TextView? = itemView.findViewById(R.id.detector_statement)
+        val deleteButton: Button? = itemView.findViewById(R.id.delete_detector)
+
+        deleteButton?.setOnClickListener {
+            ApiService().deleteDetector(itemView.context, item.id!!)
+        }
 
         name?.text = item.name
         place?.text = item.place

@@ -1,18 +1,14 @@
 package com.example.smarthome.httpclient
 
-import com.example.smarthome.data.model.LoggedInUser
-import com.example.smarthome.ui.data.listClasses.*
-import com.example.smarthome.ui.data.model.DataModel
+import com.example.smarthome.auth.bo.LoginResponse
+import com.example.smarthome.auth.bo.LoggedInUser
+import com.example.smarthome.ui.fragment_home.bo.DataModel
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 interface ApiInterface {
-
-    @GET("home")
-    fun getEcho() : Call<Echo>
 
     /**
      * Ендпоинты для авторизации и регистрации.
@@ -20,69 +16,48 @@ interface ApiInterface {
     @POST("auth/sign-in")
     fun login(@Header("Authorization") token: String): Call<LoggedInUser>
 
-    @GET("auth/refresh")
-    fun refreshToken(@Header("Authorization") token: String): Call<LoginResponse>
-
     /**
      * Ендпоинты для работы с лампочками.
      */
     @GET("api/devices/lights/")
-    fun getAllLights() : Call<ArrayList<DataModel.Light>>
+    fun getAllLights(@Header("Authorization") token: String?) : Call<ArrayList<DataModel.Light>>
 
-    @GET("api/devices/lights/{id}")
-    fun getLight(@Path("id") id: String) : Call<DataModel.Light>
-
-    @POST("api/devices/lights")
-    fun createLight(@Body light: DataModel.Light) : Call<DataModel.Light>
-
-    @PUT("api/devices/lights/{id}")
-    fun updateLight(@Path("id") id: String) : Call<DataModel.Light>
+    @POST("api/devices/lights/")
+    fun createLight(@Header("Authorization") token: String?, @Body light: DataModel.Light) : Call<DataModel.Light>
 
     @DELETE("api/devices/lights/{id}")
-    fun deleteLight(@Path("id") id: String) : Call<DataModel.Light>
+    fun deleteLight(@Header("Authorization") token: String?, @Path("id") id: String) : Call<DataModel.Light>
 
     @POST("api/devices/lights/{id}/toggle/")
-    fun toggleLight(@Path("id") id: String?) : Call<DataModel.Light>
+    fun toggleLight(@Header("Authorization") token: String?, @Path("id") id: String?) : Call<DataModel.Light>
 
     /**
      * Ендпоинты для работы с камерами.
      */
     @GET("/api/devices/cameras/")
-    fun getAllCameras() : Call<ArrayList<DataModel.Camera>>
+    fun getAllCameras(@Header("Authorization") token: String?) : Call<ArrayList<DataModel.Camera>>
 
-    @GET("api/devices/cameras/{id}")
-    fun getCamera(@Path("id") id: String) : Call<DataModel.Camera>
-
-    @POST("api/devices/cameras")
-    fun createCamera(@Body camera: DataModel.Camera) : Call<DataModel.Camera>
-
-    @PUT("api/devices/cameras/{id}")
-    fun updateCamera(@Path("id") id: String) : Call<DataModel.Camera>
+    @POST("api/devices/cameras/")
+    fun createCamera(@Header("Authorization") token: String?, @Body camera: DataModel.Camera) : Call<DataModel.Camera>
 
     @DELETE("api/devices/cameras/{id}")
-    fun deleteCamera(@Path("id") id: String) : Call<DataModel.Camera>
+    fun deleteCamera(@Header("Authorization") token: String?, @Path("id") id: String) : Call<DataModel.Camera>
 
     /**
      * Ендпоинты для работы с датчками.
      */
     @GET("/api/devices/detectors/")
-    fun getAllDetectors() : Call<ArrayList<DataModel.Detector>>
+    fun getAllDetectors(@Header("Authorization") token: String?) : Call<ArrayList<DataModel.Detector>>
 
-    @GET("api/devices/detectors/{id}")
-    fun getDetector(@Path("id") id: String) : Call<DataModel.Detector>
-
-    @POST("api/devices/detectors")
-    fun createDetector(@Body detector: DataModel.Detector) : Call<DataModel.Detector>
-
-    @PUT("api/devices/detectors/{id}")
-    fun updateDetector(@Path("id") id: String) : Call<DataModel.Detector>
+    @POST("api/devices/detectors/")
+    fun createDetector(@Header("Authorization") token: String?, @Body detector: DataModel.Detector) : Call<DataModel.Detector>
 
     @DELETE("api/devices/detectors/{id}")
-    fun deleteDetector(@Path("id") id: String) : Call<DataModel.Detector>
+    fun deleteDetector(@Header("Authorization") token: String?, @Path("id") id: String) : Call<DataModel.Detector>
 
     companion object {
 
-        var BASE_URL = "https://9f8a-188-123-231-94.eu.ngrok.io"
+        var BASE_URL = "https://3d40-188-123-231-103.eu.ngrok.io"
 
         fun create() : ApiInterface {
 

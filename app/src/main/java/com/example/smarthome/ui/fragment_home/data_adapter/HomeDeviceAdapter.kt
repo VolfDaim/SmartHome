@@ -1,13 +1,11 @@
 package com.example.smarthome.ui.fragment_home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smarthome.R
-import com.example.smarthome.ui.data.model.DataModel
+import com.example.smarthome.ui.fragment_home.bo.DataModel
+import com.example.smarthome.ui.fragment_home.data_adapter.DataAdapterViewHolder
 
 class HomeDeviceAdapter : RecyclerView.Adapter<DataAdapterViewHolder>() {
 
@@ -35,7 +33,7 @@ class HomeDeviceAdapter : RecyclerView.Adapter<DataAdapterViewHolder>() {
     }
 
     override fun getItemCount(): Int = adapterData.size
-
+    
     override fun getItemViewType(position: Int): Int {
         return when (adapterData[position]){
             is DataModel.Light -> TYPE_LIGHT
@@ -50,6 +48,11 @@ class HomeDeviceAdapter : RecyclerView.Adapter<DataAdapterViewHolder>() {
             addAll(data)
             notifyDataSetChanged()
         }
+    }
+
+    fun deleteItem(index: Int){
+        adapterData.removeAt(index)
+        notifyDataSetChanged()
     }
 
     companion object {

@@ -1,8 +1,8 @@
-package com.example.smarthome.data.model
+package com.example.smarthome.auth.bo
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
 data class LoggedInUser(
-    val message: String
+    val name: String
 )

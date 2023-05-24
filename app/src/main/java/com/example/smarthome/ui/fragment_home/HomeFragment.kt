@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(savedInstanceState == null) {
             childFragmentManager.beginTransaction()?.apply {
-                replace(R.id.fragment_home_frame, HomeFragmentDevices.newInstance())
+                replace(R.id.fragment_home_frame, HomeDevicesFragment.newInstance())
                 commit()
             }
         }

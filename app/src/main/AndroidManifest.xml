@@ -25,15 +25,15 @@
             android:label="@string/title_activity_login"
             android:theme="@style/MainTheme" />
         <activity
-            android:name=".Menu"
+            android:name=".main_activitys.MenuActivity"
             android:exported="false"
             android:theme="@style/MainTheme" />
         <activity
-            android:name=".GreetingActivity"
+            android:name=".main_activitys.GreetingActivity"
             android:exported="false"
             android:theme="@style/MainTheme" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".main_activitys.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/MainTheme">
             <intent-filter>

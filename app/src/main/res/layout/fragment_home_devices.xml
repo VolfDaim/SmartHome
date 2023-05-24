@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/space_x1"
-    tools:context=".ui.fragment_home.HomeFragmentDevices">
+    tools:context=".ui.fragment_home.HomeDevicesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

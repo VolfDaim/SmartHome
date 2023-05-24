@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ui.dashboard.ProfileFragment">
+    tools:context=".ui.fragment_profile.ProfileFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,9 +28,9 @@
                 android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:scaleType="centerCrop"
-                app:civ_border_color="#ADFF2F"
+                app:civ_border_color="@color/primary_text"
                 app:civ_border_width="1dp"
-                app:civ_circle_background_color="@color/accent_color" />
+                app:civ_circle_background_color="@color/primary_color" />
 
             <TextView
                 android:id="@+id/name_profile"
@@ -40,7 +40,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Имя профиля"
                 android:textAllCaps="false"
-                android:textColor="@color/dark_primary_color"
+                android:textColor="@color/primary_text"
                 android:textSize="21sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -63,7 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp">
+                android:paddingLeft="25dp"
+                android:paddingTop="25dp">
 
                 <ImageView
                     android:layout_width="36dp"

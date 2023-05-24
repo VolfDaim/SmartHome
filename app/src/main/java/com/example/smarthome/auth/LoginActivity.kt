@@ -8,16 +8,15 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.smarthome.Menu
+import com.example.smarthome.main_activitys.MenuActivity
 import com.example.smarthome.R
-import com.example.smarthome.data.model.LoggedInUser
+import com.example.smarthome.auth.bo.LoggedInUser
 import com.example.smarthome.httpclient.ApiInterface
-import com.example.smarthome.ui.data.listClasses.LoginResponse
+import com.example.smarthome.httpclient.ApiService
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.login.LoginException
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
                 .claim("password", editPassword.text.toString())
                 .signWith(SignatureAlgorithm.HS256, "secret".toByteArray())
                 .compact()
-            println(jwt)
+
             val login = ApiInterface.create().login(token = jwt)
             login.enqueue(object :
                 retrofit2.Callback<LoggedInUser> {
@@ -44,24 +43,35 @@ class LoginActivity : AppCompatActivity() {
                     call: Call<LoggedInUser>,
                     response: Response<LoggedInUser>
                 ) {
-                    getSharedPreferences("shared preferences", Context.MODE_PRIVATE).edit().putString("token", jwt).apply()
-                    println(response.body().toString())
-                    val intent = Intent(this@LoginActivity, Menu::class.java)
-                    startActivity(intent)
-                    finish()
+                    if(response.body() == null){
+                        Toast.makeText(this@LoginActivity, "Неверный логин или пароль", Toast.LENGTH_SHORT).show()
+                    } else {
+                        getSharedPreferences("shared preferences", Context.MODE_PRIVATE).edit()
+                            .putString("token", jwt).putString("username", response.body()!!.name).apply()
+
+                        val prefs = getSharedPreferences("shared preferences", Context.MODE_PRIVATE)
+                        val token = prefs?.getString("token", null)
+                        val editor = prefs?.edit()
+
+                        ApiService().getLights(token!!, editor!!, this@LoginActivity)
+                        ApiService().getCameras(token, editor, this@LoginActivity)
+                        ApiService().getDetectors(token, editor, this@LoginActivity)
+
+                        val intent = Intent(this@LoginActivity, MenuActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                 }
 
                 override fun onFailure(call: Call<LoggedInUser>, t: Throwable) {
-                    println(t.message.toString())
                     Toast.makeText(this@LoginActivity, "Response Failed", Toast.LENGTH_SHORT).show()
-                    getSharedPreferences("shared preferences", Context.MODE_PRIVATE).edit().putString("token", jwt).apply()
                 }
 
             })
         }
 
         signUp.setOnClickListener {
-
+            Toast.makeText(this@LoginActivity, "Sign up", Toast.LENGTH_SHORT).show()
         }
 
 
